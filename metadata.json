@@ -1,0 +1,6 @@
+{
+  "name": "Trending Keyboard Agent",
+  "description": "An AI agent-powered virtual keyboard featuring dynamic customizable fonts, evolving slang trends, and generative AI sticker creations synced securely across platforms.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

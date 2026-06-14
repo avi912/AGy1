@@ -1,0 +1,61 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Core user account profile linked to sync functionality.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Preference": {
+      "title": "Preference",
+      "description": "User customizable keyboard styles, custom layout preference, active font, and offline-sync items.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "theme": { "type": "string" },
+        "soundEnabled": { "type": "boolean" },
+        "customLayout": { "type": "string" },
+        "activeFont": { "type": "string" },
+        "savedGifs": { "type": "array" },
+        "savedStickers": { "type": "array" },
+        "savedFonts": { "type": "array" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "theme"]
+    },
+    "History": {
+      "title": "History",
+      "description": "Cross-platform keyboard input history, including styled text copies and generated stickers.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "type": { "type": "string" },
+        "content": { "type": "string" },
+        "label": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "type", "content", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "Stores core details for synchronized users."
+    },
+    "preferences/{userId}": {
+      "schema": "Preference",
+      "description": "Stores synchronized keyboard aesthetics, settings, and favorites."
+    },
+    "history/{historyId}": {
+      "schema": "History",
+      "description": "Stores syncable user activity log, sticker downloads, and design logs."
+    }
+  }
+}
